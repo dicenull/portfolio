@@ -32,10 +32,15 @@ class _Body extends StatelessWidget {
           Text(
             'dicenull',
             style: GoogleFonts.notoSansJavanese(
-              textStyle: const TextStyle(fontSize: 64),
+              textStyle: const TextStyle(
+                fontSize: 64,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          QrImageView(data: Uri.base.toString(), size: qrSize),
+          Container(
+              color: Colors.white,
+              child: QrImageView(data: Uri.base.toString(), size: qrSize)),
         ],
       ),
     );
