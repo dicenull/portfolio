@@ -21,8 +21,8 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaSize = MediaQuery.of(context).size;
-    final iconSize = mediaSize.width * .3;
-    final qrSize = mediaSize.width * .1;
+    final iconSize = mediaSize.height * .4;
+    final qrSize = mediaSize.height * .3;
 
     return Center(
       child: Column(
