@@ -16,6 +16,7 @@ dependencies:
   go_router: ^10.1.2
   google_fonts: ^6.1.0
   hooks_riverpod: ^2.0.2
+  qr_flutter: ^4.1.0
 
 dev_dependencies:
   flutter_test:
