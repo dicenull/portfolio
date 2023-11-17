@@ -8024,7 +8024,7 @@ aI0(a){var s=0,r=A.a0(t.sn),q,p,o,n
 var $async$ajk=A.a1(function(b,c){if(b===1)return A.Y(c,r)
 while(true)switch(s){case 0:o=t.N
 s=3
-return A.a5(A.aIj(A.d6("",0,null),A.aD(["Authorization","Bearer "],o,o)),$async$ajk)
+return A.a5(A.aIj(A.d6("https://dicenull.cdn.newt.so/v1/portfolio/work",0,null),A.aD(["Authorization","Bearer 1FlSmtafFpwDpTGckPHm26GXcrUV9MiBnH8KPh5TwDE"],o,o)),$async$ajk)
 case 3:n=c
 o=A.iZ(J.aY(B.be.Ot(0,A.aHV(J.aY(A.aFO(n.e).c.a,"charset")).eV(0,n.w),null),"items"),!0,t.z)
 p=A.a2(o).h("U<1,eh>")
