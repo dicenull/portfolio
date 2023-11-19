@@ -118,3 +118,4 @@ coverage/
 # fvm
 .fvm/flutter_sdk
 env.json
+.fvm

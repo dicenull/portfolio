@@ -22,12 +22,12 @@ WorkState _$WorkStateFromJson(Map<String, dynamic> json) {
 mixin _$WorkState {
   @JsonKey(name: 'title-875803')
   String get title => throw _privateConstructorUsedError;
-  DateTime? get date => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  WorkImage? get image => throw _privateConstructorUsedError;
-  String? get sourceUrl => throw _privateConstructorUsedError;
-  String? get appUrl => throw _privateConstructorUsedError;
-  List<Tag>? get tag => throw _privateConstructorUsedError;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  WorkImage get image => throw _privateConstructorUsedError;
+  String get sourceUrl => throw _privateConstructorUsedError;
+  String get appUrl => throw _privateConstructorUsedError;
+  List<Tag> get tag => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,14 +42,14 @@ abstract class $WorkStateCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'title-875803') String title,
-      DateTime? date,
-      String? description,
-      WorkImage? image,
-      String? sourceUrl,
-      String? appUrl,
-      List<Tag>? tag});
+      DateTime date,
+      String description,
+      WorkImage image,
+      String sourceUrl,
+      String appUrl,
+      List<Tag> tag});
 
-  $WorkImageCopyWith<$Res>? get image;
+  $WorkImageCopyWith<$Res> get image;
 }
 
 /// @nodoc
@@ -66,53 +66,49 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
   @override
   $Res call({
     Object? title = null,
-    Object? date = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? sourceUrl = freezed,
-    Object? appUrl = freezed,
-    Object? tag = freezed,
+    Object? date = null,
+    Object? description = null,
+    Object? image = null,
+    Object? sourceUrl = null,
+    Object? appUrl = null,
+    Object? tag = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      date: freezed == date
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      description: freezed == description
+              as DateTime,
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
+              as String,
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage?,
-      sourceUrl: freezed == sourceUrl
+              as WorkImage,
+      sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appUrl: freezed == appUrl
+              as String,
+      appUrl: null == appUrl
           ? _value.appUrl
           : appUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tag: freezed == tag
+              as String,
+      tag: null == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
-              as List<Tag>?,
+              as List<Tag>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $WorkImageCopyWith<$Res>? get image {
-    if (_value.image == null) {
-      return null;
-    }
-
-    return $WorkImageCopyWith<$Res>(_value.image!, (value) {
+  $WorkImageCopyWith<$Res> get image {
+    return $WorkImageCopyWith<$Res>(_value.image, (value) {
       return _then(_value.copyWith(image: value) as $Val);
     });
   }
@@ -127,15 +123,15 @@ abstract class _$$_WorkStateCopyWith<$Res> implements $WorkStateCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'title-875803') String title,
-      DateTime? date,
-      String? description,
-      WorkImage? image,
-      String? sourceUrl,
-      String? appUrl,
-      List<Tag>? tag});
+      DateTime date,
+      String description,
+      WorkImage image,
+      String sourceUrl,
+      String appUrl,
+      List<Tag> tag});
 
   @override
-  $WorkImageCopyWith<$Res>? get image;
+  $WorkImageCopyWith<$Res> get image;
 }
 
 /// @nodoc
@@ -150,42 +146,42 @@ class __$$_WorkStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? date = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? sourceUrl = freezed,
-    Object? appUrl = freezed,
-    Object? tag = freezed,
+    Object? date = null,
+    Object? description = null,
+    Object? image = null,
+    Object? sourceUrl = null,
+    Object? appUrl = null,
+    Object? tag = null,
   }) {
     return _then(_$_WorkState(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      date: freezed == date
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      description: freezed == description
+              as DateTime,
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
+              as String,
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage?,
-      sourceUrl: freezed == sourceUrl
+              as WorkImage,
+      sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appUrl: freezed == appUrl
+              as String,
+      appUrl: null == appUrl
           ? _value.appUrl
           : appUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tag: freezed == tag
+              as String,
+      tag: null == tag
           ? _value._tag
           : tag // ignore: cast_nullable_to_non_nullable
-              as List<Tag>?,
+              as List<Tag>,
     ));
   }
 }
@@ -195,12 +191,12 @@ class __$$_WorkStateCopyWithImpl<$Res>
 class _$_WorkState extends _WorkState {
   _$_WorkState(
       {@JsonKey(name: 'title-875803') required this.title,
-      this.date,
-      this.description,
-      this.image,
-      this.sourceUrl,
-      this.appUrl,
-      final List<Tag>? tag})
+      required this.date,
+      required this.description,
+      required this.image,
+      required this.sourceUrl,
+      required this.appUrl,
+      required final List<Tag> tag})
       : _tag = tag,
         super._();
 
@@ -211,23 +207,21 @@ class _$_WorkState extends _WorkState {
   @JsonKey(name: 'title-875803')
   final String title;
   @override
-  final DateTime? date;
+  final DateTime date;
   @override
-  final String? description;
+  final String description;
   @override
-  final WorkImage? image;
+  final WorkImage image;
   @override
-  final String? sourceUrl;
+  final String sourceUrl;
   @override
-  final String? appUrl;
-  final List<Tag>? _tag;
+  final String appUrl;
+  final List<Tag> _tag;
   @override
-  List<Tag>? get tag {
-    final value = _tag;
-    if (value == null) return null;
+  List<Tag> get tag {
     if (_tag is EqualUnmodifiableListView) return _tag;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_tag);
   }
 
   @override
@@ -273,12 +267,12 @@ class _$_WorkState extends _WorkState {
 abstract class _WorkState extends WorkState {
   factory _WorkState(
       {@JsonKey(name: 'title-875803') required final String title,
-      final DateTime? date,
-      final String? description,
-      final WorkImage? image,
-      final String? sourceUrl,
-      final String? appUrl,
-      final List<Tag>? tag}) = _$_WorkState;
+      required final DateTime date,
+      required final String description,
+      required final WorkImage image,
+      required final String sourceUrl,
+      required final String appUrl,
+      required final List<Tag> tag}) = _$_WorkState;
   _WorkState._() : super._();
 
   factory _WorkState.fromJson(Map<String, dynamic> json) =
@@ -288,17 +282,17 @@ abstract class _WorkState extends WorkState {
   @JsonKey(name: 'title-875803')
   String get title;
   @override
-  DateTime? get date;
+  DateTime get date;
   @override
-  String? get description;
+  String get description;
   @override
-  WorkImage? get image;
+  WorkImage get image;
   @override
-  String? get sourceUrl;
+  String get sourceUrl;
   @override
-  String? get appUrl;
+  String get appUrl;
   @override
-  List<Tag>? get tag;
+  List<Tag> get tag;
   @override
   @JsonKey(ignore: true)
   _$$_WorkStateCopyWith<_$_WorkState> get copyWith =>

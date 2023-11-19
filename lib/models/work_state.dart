@@ -9,12 +9,12 @@ abstract class WorkState with _$WorkState {
 
   factory WorkState({
     @JsonKey(name: 'title-875803') required String title,
-    DateTime? date,
-    String? description,
-    WorkImage? image,
-    String? sourceUrl,
-    String? appUrl,
-    List<Tag>? tag,
+    required DateTime date,
+    required String description,
+    required WorkImage image,
+    required String sourceUrl,
+    required String appUrl,
+    required List<Tag> tag,
   }) = _WorkState;
 
   factory WorkState.fromJson(Map<String, dynamic> json) =>
