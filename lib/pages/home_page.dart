@@ -4,7 +4,6 @@ import 'package:app/models/work_state.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends HookConsumerWidget {
@@ -176,7 +175,7 @@ class _SourceIcon extends StatelessWidget {
           width: size,
           height: size,
           child: const Icon(
-            SimpleIcons.github,
+            Icons.code,
             size: size * .7,
           ),
         ),
