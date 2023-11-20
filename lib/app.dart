@@ -1,5 +1,6 @@
 import 'package:app/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class App extends HookConsumerWidget {
@@ -15,6 +16,7 @@ class App extends HookConsumerWidget {
         colorSchemeSeed: seedColor,
         useMaterial3: true,
         brightness: Brightness.light,
+        textTheme: GoogleFonts.notoSansTextTheme(Theme.of(context).textTheme),
       ),
       darkTheme: ThemeData(
         colorSchemeSeed: seedColor,

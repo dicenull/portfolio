@@ -1,8 +1,8 @@
 import 'package:app/gen/assets.gen.dart';
 import 'package:app/models/work_provider.dart';
 import 'package:app/models/work_state.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,13 +21,11 @@ class HomePage extends HookConsumerWidget {
               Assets.icon.image(width: 64, height: 64),
               Container(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: const Text(
                   'dicenull',
-                  style: GoogleFonts.notoSans(
-                    textStyle: const TextStyle(
-                      fontSize: 64,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  style: TextStyle(
+                    fontSize: 64,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -39,8 +37,6 @@ class HomePage extends HookConsumerWidget {
     );
   }
 }
-
-typedef Planet = ({String title, String description, String imgUrl});
 
 class _Body extends ConsumerWidget {
   const _Body();
@@ -101,7 +97,7 @@ class _Window extends StatelessWidget {
         _SourceIcon(state.sourceUrl),
         Flexible(
           child: Container(
-            padding: const EdgeInsets.all(32),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -125,9 +121,11 @@ class _Window extends StatelessWidget {
                           maxWidth: 640,
                           maxHeight: 320,
                         ),
-                        child: FadeInImage(
-                          placeholder: Assets.icon.provider(),
-                          image: Image.network(state.image.src).image,
+                        child: CachedNetworkImage(
+                          placeholder: (_, __) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (_, __, ___) => const Icon(Icons.error),
+                          imageUrl: state.image.src,
                         ),
                       ),
                     ),
@@ -154,8 +152,8 @@ class _SourceIcon extends StatelessWidget {
 
     if (url.isEmpty) {
       return Container(
-        decoration:
-            BoxDecoration(shape: BoxShape.circle, color: scheme.primary),
+        decoration: BoxDecoration(
+            shape: BoxShape.circle, color: scheme.primaryContainer),
         width: size,
         height: size,
       );
@@ -180,24 +178,6 @@ class _SourceIcon extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _NoImage extends StatelessWidget {
-  const _NoImage();
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Assets.icon.image(
-          width: 256,
-          height: 256,
-          opacity: const AlwaysStoppedAnimation(.1),
-        ),
-      ],
     );
   }
 }
