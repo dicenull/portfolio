@@ -98,44 +98,79 @@ class _Window extends StatelessWidget {
         Flexible(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: scheme.primary),
-              ),
-              child: InkWell(
-                onTap: () {
-                  final url = state.appUrl;
-                  launchUrl(Uri.parse(url));
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(state.title, style: textTheme.displayMedium),
-                    Text(state.description, style: textTheme.bodyMedium),
-                    Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        constraints: const BoxConstraints(
-                          maxWidth: 640,
-                          maxHeight: 320,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _Tags(state.tag),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: scheme.primary),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      final url = state.appUrl;
+                      launchUrl(Uri.parse(url));
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(state.title, style: textTheme.displayMedium),
+                        Text(state.description, style: textTheme.bodyMedium),
+                        Flexible(
+                          child: Container(
+                            padding: const EdgeInsets.all(16),
+                            constraints: const BoxConstraints(
+                              maxWidth: 640,
+                              maxHeight: 320,
+                            ),
+                            child: CachedNetworkImage(
+                              placeholder: (_, __) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (_, __, ___) =>
+                                  const Icon(Icons.error),
+                              imageUrl: state.image.src,
+                            ),
+                          ),
                         ),
-                        child: CachedNetworkImage(
-                          placeholder: (_, __) =>
-                              const CircularProgressIndicator(),
-                          errorWidget: (_, __, ___) => const Icon(Icons.error),
-                          imageUrl: state.image.src,
-                        ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class _Tags extends StatelessWidget {
+  const _Tags(this.tags);
+
+  final List<Tag> tags;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: tags.map((tag) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: ShapeDecoration(
+              color: Theme.of(context).colorScheme.tertiary,
+              shape: const StadiumBorder(),
+            ),
+            child: Text(
+              tag.name,
+              style: TextStyle(color: Theme.of(context).colorScheme.onTertiary),
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }
