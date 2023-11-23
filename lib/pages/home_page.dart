@@ -44,14 +44,7 @@ class _Body extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Flexible(
-            child: _WindowList(),
-          )
-        ],
-      ),
+      child: _WindowList(),
     );
   }
 }
@@ -100,6 +93,7 @@ class _Window extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _Tags(state.tag),
                 Container(
@@ -125,13 +119,15 @@ class _Window extends StatelessWidget {
                               maxWidth: 640,
                               maxHeight: 320,
                             ),
-                            child: CachedNetworkImage(
-                              placeholder: (_, __) =>
-                                  const CircularProgressIndicator(),
-                              errorWidget: (_, __, ___) =>
-                                  const Icon(Icons.error),
-                              imageUrl: state.image.src,
-                            ),
+                            child: (state.image == null)
+                                ? const SizedBox.shrink()
+                                : CachedNetworkImage(
+                                    placeholder: (_, __) =>
+                                        const CircularProgressIndicator(),
+                                    errorWidget: (_, __, ___) =>
+                                        const Icon(Icons.error),
+                                    imageUrl: state.image!.src,
+                                  ),
                           ),
                         ),
                       ],
