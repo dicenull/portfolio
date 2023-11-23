@@ -88,54 +88,58 @@ class _Window extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         _SourceIcon(state.sourceUrl),
-        Flexible(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _Tags(state.tag),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: scheme.primary),
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      final url = state.appUrl;
-                      launchUrl(Uri.parse(url));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(state.title, style: textTheme.displayMedium),
-                        Text(state.description, style: textTheme.bodyMedium),
-                        Flexible(
-                          child: Container(
-                            padding: const EdgeInsets.all(16),
-                            constraints: const BoxConstraints(
-                              maxWidth: 640,
-                              maxHeight: 320,
-                            ),
-                            child: (state.image == null)
-                                ? const SizedBox.shrink()
-                                : CachedNetworkImage(
-                                    placeholder: (_, __) =>
-                                        const CircularProgressIndicator(),
-                                    errorWidget: (_, __, ___) =>
-                                        const Icon(Icons.error),
-                                    imageUrl: state.image!.src,
-                                  ),
-                          ),
-                        ),
-                      ],
-                    ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Tags(state.tag),
+              Container(
+                padding: const EdgeInsets.all(16),
+                constraints: const BoxConstraints(
+                  maxWidth: 640,
+                  maxHeight: 320,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: state.appUrl.isNotEmpty
+                        ? scheme.primary
+                        : scheme.onSurface,
                   ),
                 ),
-              ],
-            ),
+                child: InkWell(
+                  onTap: state.appUrl.isNotEmpty
+                      ? () {
+                          final url = state.appUrl;
+                          launchUrl(Uri.parse(url));
+                        }
+                      : null,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(state.title, style: textTheme.displayMedium),
+                      Text(state.description, style: textTheme.bodyMedium),
+                      Flexible(
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          child: (state.image == null)
+                              ? const SizedBox.shrink()
+                              : CachedNetworkImage(
+                                  placeholder: (_, __) =>
+                                      const CircularProgressIndicator(),
+                                  errorWidget: (_, __, ___) =>
+                                      const Icon(Icons.error),
+                                  imageUrl: state.image!.src,
+                                ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
