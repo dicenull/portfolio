@@ -11,10 +11,12 @@ abstract class WorkState with _$WorkState {
     @JsonKey(name: 'title-875803') required String title,
     required DateTime date,
     required String description,
-    required WorkImage image,
+    required WorkImage? image,
     required String sourceUrl,
     required String appUrl,
     required List<Tag> tag,
+    required Genre genre,
+    required Platform platform,
   }) = _WorkState;
 
   factory WorkState.fromJson(Map<String, dynamic> json) =>
@@ -44,4 +46,20 @@ enum Tag {
   dxlib,
   deno,
   javascript,
+  typescript,
+  svelete,
+}
+
+enum Genre {
+  document,
+  app,
+  game,
+}
+
+enum Platform {
+  web,
+  android,
+  windows,
+  vr,
+  physics,
 }

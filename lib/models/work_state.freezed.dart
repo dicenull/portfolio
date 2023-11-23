@@ -24,10 +24,12 @@ mixin _$WorkState {
   String get title => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  WorkImage get image => throw _privateConstructorUsedError;
+  WorkImage? get image => throw _privateConstructorUsedError;
   String get sourceUrl => throw _privateConstructorUsedError;
   String get appUrl => throw _privateConstructorUsedError;
   List<Tag> get tag => throw _privateConstructorUsedError;
+  Genre get genre => throw _privateConstructorUsedError;
+  Platform get platform => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,12 +46,14 @@ abstract class $WorkStateCopyWith<$Res> {
       {@JsonKey(name: 'title-875803') String title,
       DateTime date,
       String description,
-      WorkImage image,
+      WorkImage? image,
       String sourceUrl,
       String appUrl,
-      List<Tag> tag});
+      List<Tag> tag,
+      Genre genre,
+      Platform platform});
 
-  $WorkImageCopyWith<$Res> get image;
+  $WorkImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -68,10 +72,12 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
     Object? title = null,
     Object? date = null,
     Object? description = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? sourceUrl = null,
     Object? appUrl = null,
     Object? tag = null,
+    Object? genre = null,
+    Object? platform = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -86,10 +92,10 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage,
+              as WorkImage?,
       sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
@@ -102,13 +108,25 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      genre: null == genre
+          ? _value.genre
+          : genre // ignore: cast_nullable_to_non_nullable
+              as Genre,
+      platform: null == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as Platform,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $WorkImageCopyWith<$Res> get image {
-    return $WorkImageCopyWith<$Res>(_value.image, (value) {
+  $WorkImageCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $WorkImageCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value) as $Val);
     });
   }
@@ -125,13 +143,15 @@ abstract class _$$_WorkStateCopyWith<$Res> implements $WorkStateCopyWith<$Res> {
       {@JsonKey(name: 'title-875803') String title,
       DateTime date,
       String description,
-      WorkImage image,
+      WorkImage? image,
       String sourceUrl,
       String appUrl,
-      List<Tag> tag});
+      List<Tag> tag,
+      Genre genre,
+      Platform platform});
 
   @override
-  $WorkImageCopyWith<$Res> get image;
+  $WorkImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -148,10 +168,12 @@ class __$$_WorkStateCopyWithImpl<$Res>
     Object? title = null,
     Object? date = null,
     Object? description = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? sourceUrl = null,
     Object? appUrl = null,
     Object? tag = null,
+    Object? genre = null,
+    Object? platform = null,
   }) {
     return _then(_$_WorkState(
       title: null == title
@@ -166,10 +188,10 @@ class __$$_WorkStateCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage,
+              as WorkImage?,
       sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
@@ -182,6 +204,14 @@ class __$$_WorkStateCopyWithImpl<$Res>
           ? _value._tag
           : tag // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      genre: null == genre
+          ? _value.genre
+          : genre // ignore: cast_nullable_to_non_nullable
+              as Genre,
+      platform: null == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as Platform,
     ));
   }
 }
@@ -196,7 +226,9 @@ class _$_WorkState extends _WorkState {
       required this.image,
       required this.sourceUrl,
       required this.appUrl,
-      required final List<Tag> tag})
+      required final List<Tag> tag,
+      required this.genre,
+      required this.platform})
       : _tag = tag,
         super._();
 
@@ -211,7 +243,7 @@ class _$_WorkState extends _WorkState {
   @override
   final String description;
   @override
-  final WorkImage image;
+  final WorkImage? image;
   @override
   final String sourceUrl;
   @override
@@ -225,8 +257,13 @@ class _$_WorkState extends _WorkState {
   }
 
   @override
+  final Genre genre;
+  @override
+  final Platform platform;
+
+  @override
   String toString() {
-    return 'WorkState(title: $title, date: $date, description: $description, image: $image, sourceUrl: $sourceUrl, appUrl: $appUrl, tag: $tag)';
+    return 'WorkState(title: $title, date: $date, description: $description, image: $image, sourceUrl: $sourceUrl, appUrl: $appUrl, tag: $tag, genre: $genre, platform: $platform)';
   }
 
   @override
@@ -242,13 +279,25 @@ class _$_WorkState extends _WorkState {
             (identical(other.sourceUrl, sourceUrl) ||
                 other.sourceUrl == sourceUrl) &&
             (identical(other.appUrl, appUrl) || other.appUrl == appUrl) &&
-            const DeepCollectionEquality().equals(other._tag, _tag));
+            const DeepCollectionEquality().equals(other._tag, _tag) &&
+            (identical(other.genre, genre) || other.genre == genre) &&
+            (identical(other.platform, platform) ||
+                other.platform == platform));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, date, description, image,
-      sourceUrl, appUrl, const DeepCollectionEquality().hash(_tag));
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      date,
+      description,
+      image,
+      sourceUrl,
+      appUrl,
+      const DeepCollectionEquality().hash(_tag),
+      genre,
+      platform);
 
   @JsonKey(ignore: true)
   @override
@@ -269,10 +318,12 @@ abstract class _WorkState extends WorkState {
       {@JsonKey(name: 'title-875803') required final String title,
       required final DateTime date,
       required final String description,
-      required final WorkImage image,
+      required final WorkImage? image,
       required final String sourceUrl,
       required final String appUrl,
-      required final List<Tag> tag}) = _$_WorkState;
+      required final List<Tag> tag,
+      required final Genre genre,
+      required final Platform platform}) = _$_WorkState;
   _WorkState._() : super._();
 
   factory _WorkState.fromJson(Map<String, dynamic> json) =
@@ -286,13 +337,17 @@ abstract class _WorkState extends WorkState {
   @override
   String get description;
   @override
-  WorkImage get image;
+  WorkImage? get image;
   @override
   String get sourceUrl;
   @override
   String get appUrl;
   @override
   List<Tag> get tag;
+  @override
+  Genre get genre;
+  @override
+  Platform get platform;
   @override
   @JsonKey(ignore: true)
   _$$_WorkStateCopyWith<_$_WorkState> get copyWith =>

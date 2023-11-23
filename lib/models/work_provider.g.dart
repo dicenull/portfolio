@@ -6,7 +6,7 @@ part of 'work_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchWorkHash() => r'd239c15d1f0b8fd28094491e7dc6505da59461cd';
+String _$fetchWorkHash() => r'ff649c5e2cc7bcb7c65546f4536fe2cccdb6b89a';
 
 /// See also [fetchWork].
 @ProviderFor(fetchWork)

@@ -15,5 +15,8 @@ Future<List<WorkState>> fetchWork(FetchWorkRef ref) async {
     headers: {"Authorization": 'Bearer $token'},
   );
   final json = jsonDecode(data.body);
-  return List.from(json['items']).map((e) => WorkState.fromJson(e)).toList();
+  return List.from(json['items']).map((e) {
+    print("map: $e");
+    return WorkState.fromJson(e);
+  }).toList();
 }
