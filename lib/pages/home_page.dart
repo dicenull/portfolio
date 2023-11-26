@@ -1,6 +1,7 @@
 import 'package:app/gen/assets.gen.dart';
 import 'package:app/models/work_provider.dart';
 import 'package:app/models/work_state.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -114,9 +115,13 @@ class _Window extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(4),
-                  child: Text(state.title, style: textTheme.displayMedium),
+                  child: AutoSizeText(
+                    state.title,
+                    maxLines: 2,
+                    style: textTheme.displayMedium,
+                  ),
                 ),
-                Text(state.description, style: textTheme.bodyMedium),
+                AutoSizeText(state.description, style: textTheme.bodyMedium),
                 Flexible(
                   child: Container(
                     padding: const EdgeInsets.all(16),
