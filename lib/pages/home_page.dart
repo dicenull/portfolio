@@ -126,10 +126,50 @@ class _Window extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _SourceCodeButton(state.sourceUrl),
-                _AppUrlButton(state.appUrl, state.genre),
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: _Time(state.date),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: _SourceCodeButton(state.sourceUrl),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: _AppUrlButton(state.appUrl, state.genre),
+                ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Time extends StatelessWidget {
+  const _Time(this.time);
+
+  final DateTime time;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return RichText(
+      text: TextSpan(
+        style: textTheme.headlineMedium,
+        children: [
+          TextSpan(
+            text: '${time.year}',
+            style: textTheme.headlineSmall,
+          ),
+          TextSpan(
+            text: '/',
+            style: textTheme.headlineSmall,
+          ),
+          TextSpan(
+            text: '${time.month}',
+            style: textTheme.headlineLarge,
           ),
         ],
       ),
