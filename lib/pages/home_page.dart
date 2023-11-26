@@ -89,7 +89,16 @@ class _Window extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _Tags(state.tag),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: _Platform(state.platform),
+              ),
+              _Tags(state.tag),
+            ],
+          ),
           Container(
             padding: const EdgeInsets.all(16),
             constraints: const BoxConstraints(
@@ -122,27 +131,58 @@ class _Window extends StatelessWidget {
               ],
             ),
           ),
-          Flexible(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: _Time(state.date),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: _SourceCodeButton(state.sourceUrl),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: _AppUrlButton(state.appUrl, state.genre),
-                ),
-              ],
-            ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: _Time(state.date),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: _SourceCodeButton(state.sourceUrl),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: _AppUrlButton(state.appUrl, state.genre),
+              ),
+            ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class _Platform extends StatelessWidget {
+  const _Platform(this.platform);
+
+  final Platform platform;
+
+  @override
+  Widget build(BuildContext context) {
+    final (icon, label) = switch (platform) {
+      Platform.web => (Icons.web, 'Webアプリ'),
+      Platform.android => (Icons.android, 'Androidアプリ'),
+      Platform.windows => (Icons.laptop_windows, 'Windowsアプリ'),
+      Platform.vr => (Icons.view_in_ar, 'VRアプリ'),
+      Platform.physics => (Icons.description, 'ドキュメント'),
+    };
+    final scheme = Theme.of(context).colorScheme;
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          color: scheme.tertiary,
+        ),
+        const SizedBox(width: 2),
+        Text(
+          label,
+          style: TextStyle(color: scheme.tertiary),
+        ),
+      ],
     );
   }
 }
@@ -261,9 +301,9 @@ class _AppUrlButton extends StatelessWidget {
       ),
       label: Text(
         switch (genre) {
-          Genre.document => 'ドキュメント',
-          Genre.app => 'アプリ',
-          Genre.game => 'ゲーム',
+          Genre.document => '記事を見る',
+          Genre.app => 'アプリを開く',
+          Genre.game => 'ゲームをプレイ',
         },
       ),
     );
