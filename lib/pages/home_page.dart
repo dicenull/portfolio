@@ -58,7 +58,8 @@ class _WindowList extends ConsumerWidget {
       data: (data) => ListView.builder(
         shrinkWrap: true,
         itemCount: data.length,
-        itemBuilder: (context, index) => Padding(
+        itemBuilder: (context, index) => Container(
+          alignment: Alignment.center,
           padding: const EdgeInsets.all(16),
           child: _Window(data[index]),
         ),
@@ -82,67 +83,56 @@ class _Window extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _SourceIcon(state.sourceUrl),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _Tags(state.tag),
-              Container(
-                padding: const EdgeInsets.all(16),
-                constraints: const BoxConstraints(
-                  maxWidth: 640,
-                  maxHeight: 320,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: state.appUrl.isNotEmpty
-                        ? scheme.primary
-                        : scheme.onSurface,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _Tags(state.tag),
+          Container(
+            padding: const EdgeInsets.all(16),
+            constraints: const BoxConstraints(
+              maxWidth: 640,
+              maxHeight: 320,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: scheme.primary),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(state.title, style: textTheme.displayMedium),
+                Text(state.description, style: textTheme.bodyMedium),
+                Flexible(
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    child: (state.image == null)
+                        ? const SizedBox.shrink()
+                        : CachedNetworkImage(
+                            placeholder: (_, __) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (_, __, ___) =>
+                                const Icon(Icons.error),
+                            imageUrl: state.image!.src,
+                          ),
                   ),
                 ),
-                child: InkWell(
-                  onTap: state.appUrl.isNotEmpty
-                      ? () {
-                          final url = state.appUrl;
-                          launchUrl(Uri.parse(url));
-                        }
-                      : null,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(state.title, style: textTheme.displayMedium),
-                      Text(state.description, style: textTheme.bodyMedium),
-                      Flexible(
-                        child: Container(
-                          padding: const EdgeInsets.all(16),
-                          child: (state.image == null)
-                              ? const SizedBox.shrink()
-                              : CachedNetworkImage(
-                                  placeholder: (_, __) =>
-                                      const CircularProgressIndicator(),
-                                  errorWidget: (_, __, ___) =>
-                                      const Icon(Icons.error),
-                                  imageUrl: state.image!.src,
-                                ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+          Flexible(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _SourceCodeButton(state.sourceUrl),
+                _AppUrlButton(state.appUrl, state.genre),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -155,6 +145,8 @@ class _Tags extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: tags.map((tag) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
@@ -175,43 +167,64 @@ class _Tags extends StatelessWidget {
   }
 }
 
-class _SourceIcon extends StatelessWidget {
-  const _SourceIcon(this.url);
+class _SourceCodeButton extends StatelessWidget {
+  const _SourceCodeButton(this.url);
 
   final String url;
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     const size = 64.0;
 
     if (url.isEmpty) {
-      return Container(
-        decoration: BoxDecoration(
-            shape: BoxShape.circle, color: scheme.primaryContainer),
-        width: size,
-        height: size,
-      );
+      return const SizedBox.shrink();
     }
 
-    return Material(
-      child: InkWell(
-        splashColor: scheme.onPrimary,
-        customBorder: const CircleBorder(),
-        onTap: () {
-          if (url.isEmpty) return;
-          launchUrl(Uri.parse(url));
+    return OutlinedButton.icon(
+      onPressed: () {
+        if (url.isEmpty) return;
+        launchUrl(Uri.parse(url));
+      },
+      icon: const Icon(
+        Icons.code,
+      ),
+      label: const Text(
+        'ソースコード',
+      ),
+    );
+  }
+}
+
+class _AppUrlButton extends StatelessWidget {
+  const _AppUrlButton(this.url, this.genre);
+
+  final String url;
+  final Genre genre;
+
+  @override
+  Widget build(BuildContext context) {
+    if (url.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    return OutlinedButton.icon(
+      onPressed: () {
+        if (url.isEmpty) return;
+        launchUrl(Uri.parse(url));
+      },
+      icon: Icon(
+        switch (genre) {
+          Genre.document => Icons.article,
+          Genre.app => Icons.rocket_launch,
+          Genre.game => Icons.gamepad,
         },
-        child: Ink(
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: scheme.primary),
-          width: size,
-          height: size,
-          child: const Icon(
-            Icons.code,
-            size: size * .7,
-          ),
-        ),
+      ),
+      label: Text(
+        switch (genre) {
+          Genre.document => 'ドキュメント',
+          Genre.app => 'アプリ',
+          Genre.game => 'ゲーム',
+        },
       ),
     );
   }
