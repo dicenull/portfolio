@@ -103,7 +103,7 @@ class _Window extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             constraints: const BoxConstraints(
               maxWidth: 640,
-              maxHeight: 320,
+              maxHeight: 400,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -112,7 +112,10 @@ class _Window extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(state.title, style: textTheme.displayMedium),
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Text(state.title, style: textTheme.displayMedium),
+                ),
                 Text(state.description, style: textTheme.bodyMedium),
                 Flexible(
                   child: Container(
@@ -131,8 +134,7 @@ class _Window extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
+          Wrap(
             children: [
               Padding(
                 padding: const EdgeInsets.all(2.0),
