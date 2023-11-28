@@ -34,7 +34,7 @@ jobs:
           cache: true
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter build web --web-renderer html --base-href / --dart-define=NEWT_TOKEN=${{secrets.NEWT_TOKEN}} --dart-define=NEWT_URL=${{secrets.NEWT_URL}}
+      - run: flutter build web --base-href / --dart-define=NEWT_TOKEN=${{secrets.NEWT_TOKEN}} --dart-define=NEWT_URL=${{secrets.NEWT_URL}}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
