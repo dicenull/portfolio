@@ -1,3 +1,3 @@
 # dicenull
 
-https://dicenull.github.io/portfolio/
+<https://dicenull.com/>
