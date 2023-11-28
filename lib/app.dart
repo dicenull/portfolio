@@ -23,6 +23,7 @@ class App extends HookConsumerWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
+      themeMode: ThemeMode.system,
       routerConfig: appRouter,
     );
   }

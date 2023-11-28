@@ -1,17 +1,28 @@
+import 'dart:ui' as ui;
+
 import 'package:app/gen/assets.gen.dart';
 import 'package:app/models/work_provider.dart';
 import 'package:app/models/work_state.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+final scrollAmount = StateProvider((ref) => 0.0);
+
+final shaderProgram = FutureProvider(
+  (ref) => ui.FragmentProgram.fromAsset('assets/shaders/simple.frag'),
+);
 
 class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final amount = ref.watch(scrollAmount);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(64),
@@ -34,8 +45,43 @@ class HomePage extends HookConsumerWidget {
           ),
         ),
       ),
-      body: const _Body(),
+      body: CustomPaint(
+        painter: ref.watch(shaderProgram).maybeWhen(
+              data: (program) => ShaderPainter(
+                shader: program.fragmentShader(),
+                amount: amount,
+              ),
+              orElse: () => null,
+            ),
+        child: const _Body(),
+      ),
     );
+  }
+}
+
+class ShaderPainter extends CustomPainter {
+  ShaderPainter({required this.shader, required this.amount});
+  ui.FragmentShader shader;
+  double amount;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    shader.setFloat(0, size.width);
+    shader.setFloat(1, size.height);
+    shader.setFloat(2, amount);
+
+    final paint = Paint()
+      ..shader = shader
+      ..blendMode = BlendMode.multiply;
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant ShaderPainter oldDelegate) {
+    return oldDelegate.amount != amount;
   }
 }
 
@@ -50,15 +96,26 @@ class _Body extends ConsumerWidget {
   }
 }
 
-class _WindowList extends ConsumerWidget {
+class _WindowList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(fetchWorkProvider);
+
+    final controller = useScrollController();
+    callback() {
+      ref.read(scrollAmount.notifier).state = controller.offset * .0001;
+    }
+
+    useEffect(() {
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [controller]);
 
     return state.when(
       data: (data) => ListView.builder(
         shrinkWrap: true,
         itemCount: data.length,
+        controller: controller,
         itemBuilder: (context, index) => Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(16),
@@ -109,6 +166,7 @@ class _Window extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: scheme.primary),
+              color: scheme.background,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

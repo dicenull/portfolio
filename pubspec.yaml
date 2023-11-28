@@ -39,3 +39,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+
+  shaders:
+    - assets/shaders/simple.frag
