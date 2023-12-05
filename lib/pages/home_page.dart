@@ -1,3 +1,4 @@
+import 'dart:js' as js;
 import 'dart:ui' as ui;
 
 import 'package:app/gen/assets.gen.dart';
@@ -11,6 +12,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final scrollAmount = StateProvider((ref) => 0.0);
+
+bool get isCanvasKit => js.context['flutterCanvasKit'] != null;
 
 final shaderProgram = FutureProvider(
   (ref) => ui.FragmentProgram.fromAsset('assets/shaders/simple.frag'),
@@ -47,10 +50,14 @@ class HomePage extends HookConsumerWidget {
       ),
       body: CustomPaint(
         painter: ref.watch(shaderProgram).maybeWhen(
-              data: (program) => ShaderPainter(
-                shader: program.fragmentShader(),
-                amount: amount,
-              ),
+              data: (program) {
+                if (!isCanvasKit) return null;
+
+                return ShaderPainter(
+                  shader: program.fragmentShader(),
+                  amount: amount,
+                );
+              },
               orElse: () => null,
             ),
         child: const _Body(),
