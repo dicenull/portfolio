@@ -14,6 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.3
+  flutter_launcher_icons: ^0.13.1
   freezed_annotation: ^2.2.0
   go_router: ^10.1.2
   google_fonts: ^6.1.0
@@ -42,3 +43,10 @@ flutter:
 
   shaders:
     - assets/shaders/simple.frag
+
+flutter_icons:
+  image_path: "assets/icon.png"
+  adaptive_icon_background: "#121212"
+  web:
+    generate: true
+    image_path: "assets/icon.png"
