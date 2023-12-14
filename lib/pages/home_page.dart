@@ -184,26 +184,26 @@ class _ControlPanel extends HookConsumerWidget {
       constraints: BoxConstraints(maxWidth: width),
       child: Card(
         elevation: 2,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(4),
-              child: TextField(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
                 controller: controller,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.search),
                 ),
               ),
-            ),
-            Container(
-              alignment: Alignment.topRight,
-              child: Text(
-                '$filterCount/$allCount',
-                style: textTheme.headlineMedium,
-              ),
-            )
-          ],
+              Container(
+                alignment: Alignment.topRight,
+                child: Text(
+                  '$filterCount/$allCount',
+                  style: textTheme.headlineMedium,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
