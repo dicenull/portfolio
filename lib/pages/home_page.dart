@@ -26,41 +26,43 @@ class HomePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final amount = ref.watch(scrollAmount);
 
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(64),
-        child: AppBar(
-          title: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Assets.icon.image(width: 64, height: 64),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: const Text(
-                  'dicenull',
-                  style: TextStyle(
-                    fontSize: 64,
-                    fontWeight: FontWeight.bold,
+    return SelectionArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(64),
+          child: AppBar(
+            title: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Assets.icon.image(width: 64, height: 64),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'dicenull',
+                    style: TextStyle(
+                      fontSize: 64,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      body: CustomPaint(
-        painter: ref.watch(shaderProgram).maybeWhen(
-              data: (program) {
-                if (!isCanvasKit) return null;
+        body: CustomPaint(
+          painter: ref.watch(shaderProgram).maybeWhen(
+                data: (program) {
+                  if (!isCanvasKit) return null;
 
-                return ShaderPainter(
-                  shader: program.fragmentShader(),
-                  amount: amount,
-                );
-              },
-              orElse: () => null,
-            ),
-        child: const _Body(),
+                  return ShaderPainter(
+                    shader: program.fragmentShader(),
+                    amount: amount,
+                  );
+                },
+                orElse: () => null,
+              ),
+          child: const _Body(),
+        ),
       ),
     );
   }
