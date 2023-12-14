@@ -21,6 +21,8 @@ abstract class WorkState with _$WorkState {
 
   factory WorkState.fromJson(Map<String, dynamic> json) =>
       _$WorkStateFromJson(json);
+
+  String get compressText => "$title $description";
 }
 
 @freezed

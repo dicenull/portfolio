@@ -1,4 +1,5 @@
 import 'dart:js' as js;
+import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:app/gen/assets.gen.dart';
@@ -12,6 +13,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final scrollAmount = StateProvider((ref) => 0.0);
+final filterTextProvider = StateProvider((ref) => '');
 
 bool get isCanvasKit => js.context['flutterCanvasKit'] != null;
 
@@ -121,21 +123,89 @@ class _WindowList extends HookConsumerWidget {
     }, [controller]);
 
     return state.when(
-      data: (data) => ListView.builder(
-        shrinkWrap: true,
-        itemCount: data.length,
-        controller: controller,
-        itemBuilder: (context, index) => Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(16),
-          child: _Window(data[index]),
-        ),
-      ),
+      data: (data) {
+        final filterText = ref.watch(filterTextProvider);
+        final filteredData =
+            data.where((e) => e.compressText.contains(filterText)).toList();
+
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: _ControlPanel(data.length, filteredData.length),
+            ),
+            Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: filteredData.length,
+                controller: controller,
+                itemBuilder: (context, index) => Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(16),
+                  child: _Window(filteredData[index]),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
       loading: () => const CircularProgressIndicator(),
       error: (error, stackTrace) {
         print('$error,\n $stackTrace');
         return const Text('ERROR');
       },
+    );
+  }
+}
+
+class _ControlPanel extends HookConsumerWidget {
+  final int allCount;
+  final int filterCount;
+
+  const _ControlPanel(this.allCount, this.filterCount);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final width = max(MediaQuery.of(context).size.width * .5, 500.0);
+    final controller = useTextEditingController();
+    final textTheme = Theme.of(context).textTheme;
+
+    useEffect(() {
+      listener() {
+        ref.read(filterTextProvider.notifier).state = controller.text.trim();
+      }
+
+      controller.addListener(listener);
+
+      return () => controller.removeListener(listener);
+    }, const []);
+
+    return Container(
+      constraints: BoxConstraints(maxWidth: width),
+      child: Card(
+        elevation: 2,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(4),
+              child: TextField(
+                controller: controller,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.topRight,
+              child: Text(
+                '$filterCount/$allCount',
+                style: textTheme.headlineMedium,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
