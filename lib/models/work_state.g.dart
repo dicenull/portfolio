@@ -20,6 +20,7 @@ _$_WorkState _$$_WorkStateFromJson(Map<String, dynamic> json) => _$_WorkState(
           .toList(),
       genre: $enumDecode(_$GenreEnumMap, json['genre']),
       platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+      translateTitle: json['translateTitle'] as String?,
     );
 
 Map<String, dynamic> _$$_WorkStateToJson(_$_WorkState instance) =>
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$_WorkStateToJson(_$_WorkState instance) =>
       'tag': instance.tag.map((e) => _$TagEnumMap[e]!).toList(),
       'genre': _$GenreEnumMap[instance.genre]!,
       'platform': _$PlatformEnumMap[instance.platform]!,
+      'translateTitle': instance.translateTitle,
     };
 
 const _$TagEnumMap = {

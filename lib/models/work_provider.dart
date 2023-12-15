@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:app/models/translator_provider.dart';
 import 'package:app/models/work_state.dart';
 import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -19,5 +20,12 @@ Future<List<WorkState>> fetchWork(FetchWorkRef ref) async {
       .map((e) => WorkState.fromJson(e))
       .toList()
     ..sort((a, b) => a.date.compareTo(b.date));
-  return workList.reversed.toList();
+
+  final translates = await Future.wait(workList.map((e) async {
+    final translation = await ref.read(translatorProvider).translate(e.title);
+
+    return e.copyWith(translateTitle: translation.text);
+  }));
+
+  return translates.reversed.toList();
 }

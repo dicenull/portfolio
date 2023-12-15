@@ -30,6 +30,7 @@ mixin _$WorkState {
   List<Tag> get tag => throw _privateConstructorUsedError;
   Genre get genre => throw _privateConstructorUsedError;
   Platform get platform => throw _privateConstructorUsedError;
+  String? get translateTitle => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +52,8 @@ abstract class $WorkStateCopyWith<$Res> {
       String appUrl,
       List<Tag> tag,
       Genre genre,
-      Platform platform});
+      Platform platform,
+      String? translateTitle});
 
   $WorkImageCopyWith<$Res>? get image;
 }
@@ -78,6 +80,7 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
     Object? tag = null,
     Object? genre = null,
     Object? platform = null,
+    Object? translateTitle = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -116,6 +119,10 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
               as Platform,
+      translateTitle: freezed == translateTitle
+          ? _value.translateTitle
+          : translateTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -148,7 +155,8 @@ abstract class _$$_WorkStateCopyWith<$Res> implements $WorkStateCopyWith<$Res> {
       String appUrl,
       List<Tag> tag,
       Genre genre,
-      Platform platform});
+      Platform platform,
+      String? translateTitle});
 
   @override
   $WorkImageCopyWith<$Res>? get image;
@@ -174,6 +182,7 @@ class __$$_WorkStateCopyWithImpl<$Res>
     Object? tag = null,
     Object? genre = null,
     Object? platform = null,
+    Object? translateTitle = freezed,
   }) {
     return _then(_$_WorkState(
       title: null == title
@@ -212,6 +221,10 @@ class __$$_WorkStateCopyWithImpl<$Res>
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
               as Platform,
+      translateTitle: freezed == translateTitle
+          ? _value.translateTitle
+          : translateTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -228,7 +241,8 @@ class _$_WorkState extends _WorkState {
       required this.appUrl,
       required final List<Tag> tag,
       required this.genre,
-      required this.platform})
+      required this.platform,
+      this.translateTitle})
       : _tag = tag,
         super._();
 
@@ -260,10 +274,12 @@ class _$_WorkState extends _WorkState {
   final Genre genre;
   @override
   final Platform platform;
+  @override
+  final String? translateTitle;
 
   @override
   String toString() {
-    return 'WorkState(title: $title, date: $date, description: $description, image: $image, sourceUrl: $sourceUrl, appUrl: $appUrl, tag: $tag, genre: $genre, platform: $platform)';
+    return 'WorkState(title: $title, date: $date, description: $description, image: $image, sourceUrl: $sourceUrl, appUrl: $appUrl, tag: $tag, genre: $genre, platform: $platform, translateTitle: $translateTitle)';
   }
 
   @override
@@ -282,7 +298,9 @@ class _$_WorkState extends _WorkState {
             const DeepCollectionEquality().equals(other._tag, _tag) &&
             (identical(other.genre, genre) || other.genre == genre) &&
             (identical(other.platform, platform) ||
-                other.platform == platform));
+                other.platform == platform) &&
+            (identical(other.translateTitle, translateTitle) ||
+                other.translateTitle == translateTitle));
   }
 
   @JsonKey(ignore: true)
@@ -297,7 +315,8 @@ class _$_WorkState extends _WorkState {
       appUrl,
       const DeepCollectionEquality().hash(_tag),
       genre,
-      platform);
+      platform,
+      translateTitle);
 
   @JsonKey(ignore: true)
   @override
@@ -323,7 +342,8 @@ abstract class _WorkState extends WorkState {
       required final String appUrl,
       required final List<Tag> tag,
       required final Genre genre,
-      required final Platform platform}) = _$_WorkState;
+      required final Platform platform,
+      final String? translateTitle}) = _$_WorkState;
   _WorkState._() : super._();
 
   factory _WorkState.fromJson(Map<String, dynamic> json) =
@@ -348,6 +368,8 @@ abstract class _WorkState extends WorkState {
   Genre get genre;
   @override
   Platform get platform;
+  @override
+  String? get translateTitle;
   @override
   @JsonKey(ignore: true)
   _$$_WorkStateCopyWith<_$_WorkState> get copyWith =>

@@ -17,12 +17,13 @@ abstract class WorkState with _$WorkState {
     required List<Tag> tag,
     required Genre genre,
     required Platform platform,
+    String? translateTitle,
   }) = _WorkState;
 
   factory WorkState.fromJson(Map<String, dynamic> json) =>
       _$WorkStateFromJson(json);
 
-  String get compressText => "$title $description";
+  String get compressText => "$title $description ${translateTitle ?? ''}";
 }
 
 @freezed
