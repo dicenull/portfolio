@@ -29,13 +29,22 @@ jobs:
       - name: Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.13.0"
+          flutter-version: "3.19.2"
           channel: "stable"
           cache: true
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter build web --base-href / --dart-define=NEWT_TOKEN=${{secrets.NEWT_TOKEN}} --dart-define=NEWT_URL=${{secrets.NEWT_URL}}
-
+      - run: >
+          flutter build web --base-href / 
+          --dart-define=NEWT_TOKEN=${{secrets.NEWT_TOKEN}}
+          --dart-define=NEWT_URL=${{secrets.NEWT_URL}} 
+          --dart-define=apiKey=${{secrets.API_KEY}} 
+          --dart-define=appId=${{secrets.APP_ID}} 
+          --dart-define=messagingSenderId=${{secrets.MESSAGING_SENDER_ID}} 
+          --dart-define=projectId=${{secrets.PROJECT_ID}} 
+          --dart-define=authDomain=${{secrets.AUTH_DOMAIN}} 
+          --dart-define=storageBucket=${{secrets.STORAGE_BUCKET}} 
+          --dart-define=measurementId=${{secrets.MEASUREMENT_IDd}}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
