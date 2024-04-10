@@ -196,11 +196,15 @@ class _ControlPanel extends HookConsumerWidget {
                 ),
               ),
               Container(
-                alignment: Alignment.topRight,
-                child: Text(
-                  '$filterCount/$allCount',
-                  style: textTheme.headlineMedium,
-                ),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(10))),
+              Row(
+                children: [
+                  Text(
+                    '$filterCount/$allCount',
+                    style: textTheme.headlineMedium,
+                  ),
+                ],
               )
             ],
           ),
@@ -431,25 +435,15 @@ class _AppUrlButton extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    final (icon, label) = genre.toData();
+
     return OutlinedButton.icon(
       onPressed: () {
         if (url.isEmpty) return;
         launchUrl(Uri.parse(url));
       },
-      icon: Icon(
-        switch (genre) {
-          Genre.document => Icons.article,
-          Genre.app => Icons.rocket_launch,
-          Genre.game => Icons.gamepad,
-        },
-      ),
-      label: Text(
-        switch (genre) {
-          Genre.document => '記事を見る',
-          Genre.app => 'アプリを開く',
-          Genre.game => 'ゲームをプレイ',
-        },
-      ),
+      icon: Icon(icon),
+      label: Text(label),
     );
   }
 }

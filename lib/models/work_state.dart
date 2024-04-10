@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'work_state.freezed.dart';
@@ -56,7 +57,13 @@ enum Tag {
 enum Genre {
   document,
   app,
-  game,
+  game;
+
+  (IconData icon, String label) toData() => switch (this) {
+        Genre.document => (Icons.article, '記事を見る'),
+        Genre.app => (Icons.rocket_launch, 'アプリを開く'),
+        Genre.game => (Icons.gamepad, 'ゲームをプレイ'),
+      };
 }
 
 enum Platform {
