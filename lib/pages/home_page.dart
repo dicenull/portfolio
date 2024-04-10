@@ -22,6 +22,28 @@ final shaderProgram = FutureProvider(
   (ref) => ui.FragmentProgram.fromAsset('assets/shaders/simple.frag'),
 );
 
+final selectedGenre = StateProvider<Set<Genre>>((ref) => {Genre.all});
+
+final filteredWorkProvider =
+    Provider.autoDispose<AsyncValue<List<WorkState>>>((ref) {
+  final all = ref.watch(fetchWorkProvider);
+  final filterText = ref.watch(filterTextProvider);
+  final selectedGenres = ref.watch(selectedGenre);
+
+  return all.maybeWhen(
+    data: (data) {
+      final filteredData = data
+          .where((e) => e.compressText.contains(filterText))
+          .where((e) =>
+              selectedGenres.contains(Genre.all) ||
+              selectedGenres.contains(e.genre))
+          .toList();
+      return AsyncValue.data(filteredData);
+    },
+    orElse: () => all,
+  );
+});
+
 class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -111,7 +133,7 @@ class _Body extends ConsumerWidget {
 class _WindowList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(fetchWorkProvider);
+    final filteredState = ref.watch(filteredWorkProvider);
 
     final controller = useScrollController();
     callback() {
@@ -123,27 +145,38 @@ class _WindowList extends HookConsumerWidget {
       return () => controller.removeListener(callback);
     }, [controller]);
 
-    return state.when(
+    return filteredState.when(
       data: (data) {
-        final filterText = ref.watch(filterTextProvider);
-        final filteredData =
-            data.where((e) => e.compressText.contains(filterText)).toList();
-
         return Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: _ControlPanel(data.length, filteredData.length),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: _ControlPanel(),
+            ),
+            SegmentedButton<Genre>(
+              segments: Genre.values
+                  .map(
+                    (e) => ButtonSegment(
+                      value: e,
+                      icon: Icon(e.toData().$1),
+                      label: Text(e.toData().$2),
+                    ),
+                  )
+                  .toList(),
+              selected: ref.watch(selectedGenre),
+              onSelectionChanged: (newSelection) {
+                ref.read(selectedGenre.notifier).state = newSelection;
+              },
             ),
             Flexible(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: filteredData.length,
+                itemCount: data.length,
                 controller: controller,
                 itemBuilder: (context, index) => Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(16),
-                  child: _Window(filteredData[index]),
+                  child: _Window(data[index]),
                 ),
               ),
             ),
@@ -160,13 +193,15 @@ class _WindowList extends HookConsumerWidget {
 }
 
 class _ControlPanel extends HookConsumerWidget {
-  final int allCount;
-  final int filterCount;
-
-  const _ControlPanel(this.allCount, this.filterCount);
+  const _ControlPanel();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final allCount = ref.watch(fetchWorkProvider).asData?.value.length;
+    final filterCount = ref.watch(filteredWorkProvider).asData?.value.length;
+
+    if (allCount == null || filterCount == null) return const SizedBox.shrink();
+
     final width = max(MediaQuery.of(context).size.width * .5, 500.0);
     final controller = useTextEditingController();
     final textTheme = Theme.of(context).textTheme;
