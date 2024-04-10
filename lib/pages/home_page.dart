@@ -241,44 +241,62 @@ class _Window extends StatelessWidget {
               _Tags(state.tag),
             ],
           ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            constraints: const BoxConstraints(
-              maxWidth: 640,
-              maxHeight: 400,
-            ),
-            decoration: BoxDecoration(
+          Material(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                color: scheme.primary,
+                width: 2,
+              ),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: scheme.primary),
-              color: scheme.background,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: AutoSizeText(
-                    state.title,
-                    maxLines: 2,
-                    style: textTheme.displayMedium,
-                  ),
+            color: scheme.background,
+            child: InkWell(
+              onTap: () {
+                final url = state.appUrl;
+                final label = state.genre.name;
+                if (url.isEmpty) return;
+
+                FirebaseAnalytics.instance.logEvent(
+                    name: 'openAppUrl',
+                    parameters: {'url': url, 'genre': label});
+                launchUrl(Uri.parse(url));
+              },
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                constraints: const BoxConstraints(
+                  maxWidth: 640,
+                  maxHeight: 400,
                 ),
-                AutoSizeText(state.description, style: textTheme.bodyMedium),
-                Flexible(
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    child: (state.image == null)
-                        ? const SizedBox.shrink()
-                        : CachedNetworkImage(
-                            placeholder: (_, __) =>
-                                const CircularProgressIndicator(),
-                            errorWidget: (_, __, ___) =>
-                                const Icon(Icons.error),
-                            imageUrl: state.image!.src,
-                          ),
-                  ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: AutoSizeText(
+                        state.title,
+                        maxLines: 2,
+                        style: textTheme.displayMedium,
+                      ),
+                    ),
+                    AutoSizeText(state.description,
+                        style: textTheme.bodyMedium),
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        child: (state.image == null)
+                            ? const SizedBox.shrink()
+                            : CachedNetworkImage(
+                                placeholder: (_, __) =>
+                                    const CircularProgressIndicator(),
+                                errorWidget: (_, __, ___) =>
+                                    const Icon(Icons.error),
+                                imageUrl: state.image!.src,
+                              ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           Wrap(
@@ -288,12 +306,8 @@ class _Window extends StatelessWidget {
                 child: _Time(state.date),
               ),
               Padding(
-                padding: const EdgeInsets.all(2.0),
+                padding: const EdgeInsets.all(8),
                 child: _SourceCodeButton(state.sourceUrl),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: _AppUrlButton(state.appUrl, state.genre),
               ),
             ],
           ),
@@ -423,34 +437,6 @@ class _SourceCodeButton extends StatelessWidget {
       label: const Text(
         'ソースコード',
       ),
-    );
-  }
-}
-
-class _AppUrlButton extends StatelessWidget {
-  const _AppUrlButton(this.url, this.genre);
-
-  final String url;
-  final Genre genre;
-
-  @override
-  Widget build(BuildContext context) {
-    if (url.isEmpty) {
-      return const SizedBox.shrink();
-    }
-
-    final (icon, label) = genre.toData();
-
-    return OutlinedButton.icon(
-      onPressed: () {
-        if (url.isEmpty) return;
-
-        FirebaseAnalytics.instance.logEvent(
-            name: 'openAppUrl', parameters: {'url': url, 'genre': label});
-        launchUrl(Uri.parse(url));
-      },
-      icon: Icon(icon),
-      label: Text(label),
     );
   }
 }
