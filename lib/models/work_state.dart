@@ -55,13 +55,11 @@ enum Tag {
 }
 
 enum Genre {
-  all,
   document,
   app,
   game;
 
   (IconData icon, String label) toData() => switch (this) {
-        Genre.all => (Icons.notes, 'すべて'),
         Genre.document => (Icons.article, '記事'),
         Genre.app => (Icons.rocket_launch, 'アプリ'),
         Genre.game => (Icons.gamepad, 'ゲーム'),

@@ -22,7 +22,7 @@ final shaderProgram = FutureProvider(
   (ref) => ui.FragmentProgram.fromAsset('assets/shaders/simple.frag'),
 );
 
-final selectedGenre = StateProvider<Set<Genre>>((ref) => {Genre.all});
+final selectedGenre = StateProvider<Set<Genre>>((ref) => {});
 
 final filteredWorkProvider =
     Provider.autoDispose<AsyncValue<List<WorkState>>>((ref) {
@@ -34,9 +34,9 @@ final filteredWorkProvider =
     data: (data) {
       final filteredData = data
           .where((e) => e.compressText.contains(filterText))
-          .where((e) =>
-              selectedGenres.contains(Genre.all) ||
-              selectedGenres.contains(e.genre))
+          .where(
+            (e) => selectedGenres.isEmpty || selectedGenres.contains(e.genre),
+          )
           .toList();
       return AsyncValue.data(filteredData);
     },
@@ -148,18 +148,25 @@ class _WindowList extends HookConsumerWidget {
     return filteredState.when(
       data: (data) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Padding(
               padding: EdgeInsets.all(16),
               child: _ControlPanel(),
             ),
             SegmentedButton<Genre>(
+              emptySelectionAllowed: true,
               segments: Genre.values
                   .map(
                     (e) => ButtonSegment(
                       value: e,
                       icon: Icon(e.toData().$1),
-                      label: Text(e.toData().$2),
+                      label: SizedBox(
+                        width: 48,
+                        child: Center(
+                          child: Text(e.toData().$2),
+                        ),
+                      ),
                     ),
                   )
                   .toList(),
