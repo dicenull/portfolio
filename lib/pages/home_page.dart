@@ -45,7 +45,7 @@ final filteredWorkProvider =
 });
 
 class HomePage extends HookConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -284,7 +284,7 @@ class _Window extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(10),
             ),
-            color: scheme.background,
+            color: scheme.surface,
             child: InkWell(
               onTap: () {
                 final url = state.appUrl;
