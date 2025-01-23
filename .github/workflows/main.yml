@@ -35,7 +35,7 @@ jobs:
       - run: flutter --version
       - run: flutter pub get
       - run: >
-          flutter build web --base-href / 
+          flutter build web --wasm --base-href / 
           --dart-define=NEWT_TOKEN=${{secrets.NEWT_TOKEN}}
           --dart-define=NEWT_URL=${{secrets.NEWT_URL}} 
           --dart-define=apiKey=${{secrets.API_KEY}} 
