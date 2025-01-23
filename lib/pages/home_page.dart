@@ -5,7 +5,6 @@ import 'package:app/models/work_provider.dart';
 import 'package:app/models/work_state.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -234,12 +233,8 @@ class _Window extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 final url = state.appUrl;
-                final label = state.genre.name;
                 if (url.isEmpty) return;
 
-                FirebaseAnalytics.instance.logEvent(
-                    name: 'openAppUrl',
-                    parameters: {'url': url, 'genre': label});
                 launchUrl(Uri.parse(url));
               },
               child: Container(
@@ -408,8 +403,6 @@ class _SourceCodeButton extends StatelessWidget {
       onPressed: () {
         if (url.isEmpty) return;
 
-        FirebaseAnalytics.instance
-            .logEvent(name: 'openSourceCode', parameters: {'url': url});
         launchUrl(Uri.parse(url));
       },
       icon: const Icon(
