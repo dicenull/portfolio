@@ -44,9 +44,6 @@ flutter:
   assets:
     - assets/
 
-  shaders:
-    - assets/shaders/simple.frag
-
 flutter_icons:
   image_path: "assets/icon.png"
   adaptive_icon_background: "#121212"

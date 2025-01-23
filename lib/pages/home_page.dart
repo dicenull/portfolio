@@ -1,6 +1,4 @@
-import 'dart:js' as js;
 import 'dart:math';
-import 'dart:ui' as ui;
 
 import 'package:app/gen/assets.gen.dart';
 import 'package:app/models/work_provider.dart';
@@ -13,14 +11,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final scrollAmount = StateProvider((ref) => 0.0);
 final filterTextProvider = StateProvider((ref) => '');
-
-bool get isCanvasKit => js.context['flutterCanvasKit'] != null;
-
-final shaderProgram = FutureProvider(
-  (ref) => ui.FragmentProgram.fromAsset('assets/shaders/simple.frag'),
-);
 
 final selectedGenre = StateProvider<Set<Genre>>((ref) => {});
 
@@ -49,8 +40,6 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final amount = ref.watch(scrollAmount);
-
     return SelectionArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -74,48 +63,9 @@ class HomePage extends HookConsumerWidget {
             ),
           ),
         ),
-        body: CustomPaint(
-          painter: ref.watch(shaderProgram).maybeWhen(
-                data: (program) {
-                  if (!isCanvasKit) return null;
-
-                  return ShaderPainter(
-                    shader: program.fragmentShader(),
-                    amount: amount,
-                  );
-                },
-                orElse: () => null,
-              ),
-          child: const _Body(),
-        ),
+        body: const _Body(),
       ),
     );
-  }
-}
-
-class ShaderPainter extends CustomPainter {
-  ShaderPainter({required this.shader, required this.amount});
-  ui.FragmentShader shader;
-  double amount;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    shader.setFloat(0, size.width);
-    shader.setFloat(1, size.height);
-    shader.setFloat(2, amount);
-
-    final paint = Paint()
-      ..shader = shader
-      ..blendMode = BlendMode.multiply;
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant ShaderPainter oldDelegate) {
-    return oldDelegate.amount != amount;
   }
 }
 
@@ -134,16 +84,6 @@ class _WindowList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filteredState = ref.watch(filteredWorkProvider);
-
-    final controller = useScrollController();
-    callback() {
-      ref.read(scrollAmount.notifier).state = controller.offset * .0001;
-    }
-
-    useEffect(() {
-      controller.addListener(callback);
-      return () => controller.removeListener(callback);
-    }, [controller]);
 
     return filteredState.when(
       data: (data) {
@@ -179,7 +119,6 @@ class _WindowList extends HookConsumerWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: data.length,
-                controller: controller,
                 itemBuilder: (context, index) => Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(16),
