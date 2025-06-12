@@ -266,7 +266,7 @@ class _Window extends StatelessWidget {
                                     const CircularProgressIndicator(),
                                 errorWidget: (_, __, ___) =>
                                     const Icon(Icons.error),
-                                imageUrl: state.image!.src,
+                                imageUrl: state.image!,
                               ),
                       ),
                     ),

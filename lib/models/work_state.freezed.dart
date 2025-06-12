@@ -23,7 +23,7 @@ mixin _$WorkState {
   String get title => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  WorkImage? get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   String get sourceUrl => throw _privateConstructorUsedError;
   String get appUrl => throw _privateConstructorUsedError;
   List<Tag> get tag => throw _privateConstructorUsedError;
@@ -50,15 +50,13 @@ abstract class $WorkStateCopyWith<$Res> {
       {String title,
       DateTime date,
       String description,
-      WorkImage? image,
+      String? image,
       String sourceUrl,
       String appUrl,
       List<Tag> tag,
       Genre genre,
       Platform platform,
       String? translateTitle});
-
-  $WorkImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -103,7 +101,7 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage?,
+              as String?,
       sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
@@ -130,20 +128,6 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
               as String?,
     ) as $Val);
   }
-
-  /// Create a copy of WorkState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkImageCopyWith<$Res>? get image {
-    if (_value.image == null) {
-      return null;
-    }
-
-    return $WorkImageCopyWith<$Res>(_value.image!, (value) {
-      return _then(_value.copyWith(image: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -158,16 +142,13 @@ abstract class _$$WorkStateImplCopyWith<$Res>
       {String title,
       DateTime date,
       String description,
-      WorkImage? image,
+      String? image,
       String sourceUrl,
       String appUrl,
       List<Tag> tag,
       Genre genre,
       Platform platform,
       String? translateTitle});
-
-  @override
-  $WorkImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -210,7 +191,7 @@ class __$$WorkStateImplCopyWithImpl<$Res>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage?,
+              as String?,
       sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
@@ -266,7 +247,7 @@ class _$WorkStateImpl extends _WorkState {
   @override
   final String description;
   @override
-  final WorkImage? image;
+  final String? image;
   @override
   final String sourceUrl;
   @override
@@ -348,7 +329,7 @@ abstract class _WorkState extends WorkState {
       {required final String title,
       required final DateTime date,
       required final String description,
-      required final WorkImage? image,
+      required final String? image,
       required final String sourceUrl,
       required final String appUrl,
       required final List<Tag> tag,
@@ -367,7 +348,7 @@ abstract class _WorkState extends WorkState {
   @override
   String get description;
   @override
-  WorkImage? get image;
+  String? get image;
   @override
   String get sourceUrl;
   @override
@@ -386,154 +367,5 @@ abstract class _WorkState extends WorkState {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WorkStateImplCopyWith<_$WorkStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-WorkImage _$WorkImageFromJson(Map<String, dynamic> json) {
-  return _WorkImage.fromJson(json);
-}
-
-/// @nodoc
-mixin _$WorkImage {
-  String get src => throw _privateConstructorUsedError;
-
-  /// Serializes this WorkImage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of WorkImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $WorkImageCopyWith<WorkImage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WorkImageCopyWith<$Res> {
-  factory $WorkImageCopyWith(WorkImage value, $Res Function(WorkImage) then) =
-      _$WorkImageCopyWithImpl<$Res, WorkImage>;
-  @useResult
-  $Res call({String src});
-}
-
-/// @nodoc
-class _$WorkImageCopyWithImpl<$Res, $Val extends WorkImage>
-    implements $WorkImageCopyWith<$Res> {
-  _$WorkImageCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of WorkImage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? src = null,
-  }) {
-    return _then(_value.copyWith(
-      src: null == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$WorkImageImplCopyWith<$Res>
-    implements $WorkImageCopyWith<$Res> {
-  factory _$$WorkImageImplCopyWith(
-          _$WorkImageImpl value, $Res Function(_$WorkImageImpl) then) =
-      __$$WorkImageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String src});
-}
-
-/// @nodoc
-class __$$WorkImageImplCopyWithImpl<$Res>
-    extends _$WorkImageCopyWithImpl<$Res, _$WorkImageImpl>
-    implements _$$WorkImageImplCopyWith<$Res> {
-  __$$WorkImageImplCopyWithImpl(
-      _$WorkImageImpl _value, $Res Function(_$WorkImageImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WorkImage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? src = null,
-  }) {
-    return _then(_$WorkImageImpl(
-      src: null == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WorkImageImpl extends _WorkImage {
-  _$WorkImageImpl({required this.src}) : super._();
-
-  factory _$WorkImageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WorkImageImplFromJson(json);
-
-  @override
-  final String src;
-
-  @override
-  String toString() {
-    return 'WorkImage(src: $src)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WorkImageImpl &&
-            (identical(other.src, src) || other.src == src));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, src);
-
-  /// Create a copy of WorkImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WorkImageImplCopyWith<_$WorkImageImpl> get copyWith =>
-      __$$WorkImageImplCopyWithImpl<_$WorkImageImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WorkImageImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _WorkImage extends WorkImage {
-  factory _WorkImage({required final String src}) = _$WorkImageImpl;
-  _WorkImage._() : super._();
-
-  factory _WorkImage.fromJson(Map<String, dynamic> json) =
-      _$WorkImageImpl.fromJson;
-
-  @override
-  String get src;
-
-  /// Create a copy of WorkImage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WorkImageImplCopyWith<_$WorkImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

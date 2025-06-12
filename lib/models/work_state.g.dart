@@ -11,9 +11,7 @@ _$WorkStateImpl _$$WorkStateImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       date: DateTime.parse(json['date'] as String),
       description: json['description'] as String,
-      image: json['image'] == null
-          ? null
-          : WorkImage.fromJson(json['image'] as Map<String, dynamic>),
+      image: json['image'] as String?,
       sourceUrl: json['sourceUrl'] as String,
       appUrl: json['appUrl'] as String,
       tag: (json['tag'] as List<dynamic>)
@@ -66,13 +64,3 @@ const _$PlatformEnumMap = {
   Platform.vr: 'vr',
   Platform.physics: 'physics',
 };
-
-_$WorkImageImpl _$$WorkImageImplFromJson(Map<String, dynamic> json) =>
-    _$WorkImageImpl(
-      src: json['src'] as String,
-    );
-
-Map<String, dynamic> _$$WorkImageImplToJson(_$WorkImageImpl instance) =>
-    <String, dynamic>{
-      'src': instance.src,
-    };
