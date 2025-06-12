@@ -6,10 +6,6 @@ on:
 
   workflow_dispatch:
 
-env:
-  NEWT_URL: ${{secrets.NEWT_URL}}
-  NEWT_TOKEN: ${{secrets.NEWT_TOKEN}}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,15 +32,6 @@ jobs:
       - run: flutter pub get
       - run: >
           flutter build web --wasm --base-href / 
-          --dart-define=NEWT_TOKEN=${{secrets.NEWT_TOKEN}}
-          --dart-define=NEWT_URL=${{secrets.NEWT_URL}} 
-          --dart-define=apiKey=${{secrets.API_KEY}} 
-          --dart-define=appId=${{secrets.APP_ID}} 
-          --dart-define=messagingSenderId=${{secrets.MESSAGING_SENDER_ID}} 
-          --dart-define=projectId=${{secrets.PROJECT_ID}} 
-          --dart-define=authDomain=${{secrets.AUTH_DOMAIN}} 
-          --dart-define=storageBucket=${{secrets.STORAGE_BUCKET}} 
-          --dart-define=measurementId=${{secrets.MEASUREMENT_IDd}}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
