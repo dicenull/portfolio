@@ -9,10 +9,10 @@ abstract class WorkState with _$WorkState {
   const WorkState._();
 
   factory WorkState({
-    @JsonKey(name: 'title-875803') required String title,
+    required String title,
     required DateTime date,
     required String description,
-    required WorkImage? image,
+    required String? image,
     required String sourceUrl,
     required String appUrl,
     required List<Tag> tag,
@@ -25,18 +25,6 @@ abstract class WorkState with _$WorkState {
       _$WorkStateFromJson(json);
 
   String get compressText => "$title $description ${translateTitle ?? ''}";
-}
-
-@freezed
-abstract class WorkImage with _$WorkImage {
-  const WorkImage._();
-
-  factory WorkImage({
-    required String src,
-  }) = _WorkImage;
-
-  factory WorkImage.fromJson(Map<String, dynamic> json) =>
-      _$WorkImageFromJson(json);
 }
 
 enum Tag {

@@ -6,7 +6,7 @@ part of 'work_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchWorkHash() => r'69028a86ba02ea6994cd0a546ddcb049893cc9f1';
+String _$fetchWorkHash() => r'69b2db042e6f02720feaa43d4691269c95a8da71';
 
 /// See also [fetchWork].
 @ProviderFor(fetchWork)
@@ -19,6 +19,8 @@ final fetchWorkProvider = AutoDisposeFutureProvider<List<WorkState>>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef FetchWorkRef = AutoDisposeFutureProviderRef<List<WorkState>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

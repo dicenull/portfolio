@@ -6,13 +6,12 @@ part of 'work_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WorkState _$$_WorkStateFromJson(Map<String, dynamic> json) => _$_WorkState(
-      title: json['title-875803'] as String,
+_$WorkStateImpl _$$WorkStateImplFromJson(Map<String, dynamic> json) =>
+    _$WorkStateImpl(
+      title: json['title'] as String,
       date: DateTime.parse(json['date'] as String),
       description: json['description'] as String,
-      image: json['image'] == null
-          ? null
-          : WorkImage.fromJson(json['image'] as Map<String, dynamic>),
+      image: json['image'] as String?,
       sourceUrl: json['sourceUrl'] as String,
       appUrl: json['appUrl'] as String,
       tag: (json['tag'] as List<dynamic>)
@@ -23,9 +22,9 @@ _$_WorkState _$$_WorkStateFromJson(Map<String, dynamic> json) => _$_WorkState(
       translateTitle: json['translateTitle'] as String?,
     );
 
-Map<String, dynamic> _$$_WorkStateToJson(_$_WorkState instance) =>
+Map<String, dynamic> _$$WorkStateImplToJson(_$WorkStateImpl instance) =>
     <String, dynamic>{
-      'title-875803': instance.title,
+      'title': instance.title,
       'date': instance.date.toIso8601String(),
       'description': instance.description,
       'image': instance.image,
@@ -65,12 +64,3 @@ const _$PlatformEnumMap = {
   Platform.vr: 'vr',
   Platform.physics: 'physics',
 };
-
-_$_WorkImage _$$_WorkImageFromJson(Map<String, dynamic> json) => _$_WorkImage(
-      src: json['src'] as String,
-    );
-
-Map<String, dynamic> _$$_WorkImageToJson(_$_WorkImage instance) =>
-    <String, dynamic>{
-      'src': instance.src,
-    };

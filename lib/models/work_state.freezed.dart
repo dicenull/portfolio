@@ -12,7 +12,7 @@ part of 'work_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 WorkState _$WorkStateFromJson(Map<String, dynamic> json) {
   return _WorkState.fromJson(json);
@@ -20,11 +20,10 @@ WorkState _$WorkStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkState {
-  @JsonKey(name: 'title-875803')
   String get title => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  WorkImage? get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   String get sourceUrl => throw _privateConstructorUsedError;
   String get appUrl => throw _privateConstructorUsedError;
   List<Tag> get tag => throw _privateConstructorUsedError;
@@ -32,8 +31,12 @@ mixin _$WorkState {
   Platform get platform => throw _privateConstructorUsedError;
   String? get translateTitle => throw _privateConstructorUsedError;
 
+  /// Serializes this WorkState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WorkState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WorkStateCopyWith<WorkState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,18 +47,16 @@ abstract class $WorkStateCopyWith<$Res> {
       _$WorkStateCopyWithImpl<$Res, WorkState>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'title-875803') String title,
+      {String title,
       DateTime date,
       String description,
-      WorkImage? image,
+      String? image,
       String sourceUrl,
       String appUrl,
       List<Tag> tag,
       Genre genre,
       Platform platform,
       String? translateTitle});
-
-  $WorkImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -68,6 +69,8 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WorkState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,7 +101,7 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage?,
+              as String?,
       sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
@@ -125,51 +128,39 @@ class _$WorkStateCopyWithImpl<$Res, $Val extends WorkState>
               as String?,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkImageCopyWith<$Res>? get image {
-    if (_value.image == null) {
-      return null;
-    }
-
-    return $WorkImageCopyWith<$Res>(_value.image!, (value) {
-      return _then(_value.copyWith(image: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_WorkStateCopyWith<$Res> implements $WorkStateCopyWith<$Res> {
-  factory _$$_WorkStateCopyWith(
-          _$_WorkState value, $Res Function(_$_WorkState) then) =
-      __$$_WorkStateCopyWithImpl<$Res>;
+abstract class _$$WorkStateImplCopyWith<$Res>
+    implements $WorkStateCopyWith<$Res> {
+  factory _$$WorkStateImplCopyWith(
+          _$WorkStateImpl value, $Res Function(_$WorkStateImpl) then) =
+      __$$WorkStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'title-875803') String title,
+      {String title,
       DateTime date,
       String description,
-      WorkImage? image,
+      String? image,
       String sourceUrl,
       String appUrl,
       List<Tag> tag,
       Genre genre,
       Platform platform,
       String? translateTitle});
-
-  @override
-  $WorkImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
-class __$$_WorkStateCopyWithImpl<$Res>
-    extends _$WorkStateCopyWithImpl<$Res, _$_WorkState>
-    implements _$$_WorkStateCopyWith<$Res> {
-  __$$_WorkStateCopyWithImpl(
-      _$_WorkState _value, $Res Function(_$_WorkState) _then)
+class __$$WorkStateImplCopyWithImpl<$Res>
+    extends _$WorkStateCopyWithImpl<$Res, _$WorkStateImpl>
+    implements _$$WorkStateImplCopyWith<$Res> {
+  __$$WorkStateImplCopyWithImpl(
+      _$WorkStateImpl _value, $Res Function(_$WorkStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WorkState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,7 +175,7 @@ class __$$_WorkStateCopyWithImpl<$Res>
     Object? platform = null,
     Object? translateTitle = freezed,
   }) {
-    return _then(_$_WorkState(
+    return _then(_$WorkStateImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -200,7 +191,7 @@ class __$$_WorkStateCopyWithImpl<$Res>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as WorkImage?,
+              as String?,
       sourceUrl: null == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
@@ -231,9 +222,9 @@ class __$$_WorkStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WorkState extends _WorkState {
-  _$_WorkState(
-      {@JsonKey(name: 'title-875803') required this.title,
+class _$WorkStateImpl extends _WorkState {
+  _$WorkStateImpl(
+      {required this.title,
       required this.date,
       required this.description,
       required this.image,
@@ -246,18 +237,17 @@ class _$_WorkState extends _WorkState {
       : _tag = tag,
         super._();
 
-  factory _$_WorkState.fromJson(Map<String, dynamic> json) =>
-      _$$_WorkStateFromJson(json);
+  factory _$WorkStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WorkStateImplFromJson(json);
 
   @override
-  @JsonKey(name: 'title-875803')
   final String title;
   @override
   final DateTime date;
   @override
   final String description;
   @override
-  final WorkImage? image;
+  final String? image;
   @override
   final String sourceUrl;
   @override
@@ -283,10 +273,10 @@ class _$_WorkState extends _WorkState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WorkState &&
+            other is _$WorkStateImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.description, description) ||
@@ -303,7 +293,7 @@ class _$_WorkState extends _WorkState {
                 other.translateTitle == translateTitle));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -318,15 +308,17 @@ class _$_WorkState extends _WorkState {
       platform,
       translateTitle);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WorkState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkStateCopyWith<_$_WorkState> get copyWith =>
-      __$$_WorkStateCopyWithImpl<_$_WorkState>(this, _$identity);
+  _$$WorkStateImplCopyWith<_$WorkStateImpl> get copyWith =>
+      __$$WorkStateImplCopyWithImpl<_$WorkStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WorkStateToJson(
+    return _$$WorkStateImplToJson(
       this,
     );
   }
@@ -334,30 +326,29 @@ class _$_WorkState extends _WorkState {
 
 abstract class _WorkState extends WorkState {
   factory _WorkState(
-      {@JsonKey(name: 'title-875803') required final String title,
+      {required final String title,
       required final DateTime date,
       required final String description,
-      required final WorkImage? image,
+      required final String? image,
       required final String sourceUrl,
       required final String appUrl,
       required final List<Tag> tag,
       required final Genre genre,
       required final Platform platform,
-      final String? translateTitle}) = _$_WorkState;
+      final String? translateTitle}) = _$WorkStateImpl;
   _WorkState._() : super._();
 
   factory _WorkState.fromJson(Map<String, dynamic> json) =
-      _$_WorkState.fromJson;
+      _$WorkStateImpl.fromJson;
 
   @override
-  @JsonKey(name: 'title-875803')
   String get title;
   @override
   DateTime get date;
   @override
   String get description;
   @override
-  WorkImage? get image;
+  String? get image;
   @override
   String get sourceUrl;
   @override
@@ -370,143 +361,11 @@ abstract class _WorkState extends WorkState {
   Platform get platform;
   @override
   String? get translateTitle;
+
+  /// Create a copy of WorkState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_WorkStateCopyWith<_$_WorkState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-WorkImage _$WorkImageFromJson(Map<String, dynamic> json) {
-  return _WorkImage.fromJson(json);
-}
-
-/// @nodoc
-mixin _$WorkImage {
-  String get src => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WorkImageCopyWith<WorkImage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WorkImageCopyWith<$Res> {
-  factory $WorkImageCopyWith(WorkImage value, $Res Function(WorkImage) then) =
-      _$WorkImageCopyWithImpl<$Res, WorkImage>;
-  @useResult
-  $Res call({String src});
-}
-
-/// @nodoc
-class _$WorkImageCopyWithImpl<$Res, $Val extends WorkImage>
-    implements $WorkImageCopyWith<$Res> {
-  _$WorkImageCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? src = null,
-  }) {
-    return _then(_value.copyWith(
-      src: null == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_WorkImageCopyWith<$Res> implements $WorkImageCopyWith<$Res> {
-  factory _$$_WorkImageCopyWith(
-          _$_WorkImage value, $Res Function(_$_WorkImage) then) =
-      __$$_WorkImageCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String src});
-}
-
-/// @nodoc
-class __$$_WorkImageCopyWithImpl<$Res>
-    extends _$WorkImageCopyWithImpl<$Res, _$_WorkImage>
-    implements _$$_WorkImageCopyWith<$Res> {
-  __$$_WorkImageCopyWithImpl(
-      _$_WorkImage _value, $Res Function(_$_WorkImage) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? src = null,
-  }) {
-    return _then(_$_WorkImage(
-      src: null == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_WorkImage extends _WorkImage {
-  _$_WorkImage({required this.src}) : super._();
-
-  factory _$_WorkImage.fromJson(Map<String, dynamic> json) =>
-      _$$_WorkImageFromJson(json);
-
-  @override
-  final String src;
-
-  @override
-  String toString() {
-    return 'WorkImage(src: $src)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkImage &&
-            (identical(other.src, src) || other.src == src));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, src);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_WorkImageCopyWith<_$_WorkImage> get copyWith =>
-      __$$_WorkImageCopyWithImpl<_$_WorkImage>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_WorkImageToJson(
-      this,
-    );
-  }
-}
-
-abstract class _WorkImage extends WorkImage {
-  factory _WorkImage({required final String src}) = _$_WorkImage;
-  _WorkImage._() : super._();
-
-  factory _WorkImage.fromJson(Map<String, dynamic> json) =
-      _$_WorkImage.fromJson;
-
-  @override
-  String get src;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WorkImageCopyWith<_$_WorkImage> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WorkStateImplCopyWith<_$WorkStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
