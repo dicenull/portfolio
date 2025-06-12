@@ -4,7 +4,6 @@ import 'package:app/gen/assets.gen.dart';
 import 'package:app/models/work_provider.dart';
 import 'package:app/models/work_state.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -261,12 +260,9 @@ class _Window extends StatelessWidget {
                         padding: const EdgeInsets.all(16),
                         child: (state.image == null)
                             ? const SizedBox.shrink()
-                            : CachedNetworkImage(
-                                placeholder: (_, __) =>
-                                    const CircularProgressIndicator(),
-                                errorWidget: (_, __, ___) =>
-                                    const Icon(Icons.error),
-                                imageUrl: state.image!,
+                            : Image.asset(
+                                'assets/images/${state.image!}',
+                                fit: BoxFit.cover,
                               ),
                       ),
                     ),
