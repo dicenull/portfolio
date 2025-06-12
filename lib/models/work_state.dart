@@ -9,7 +9,7 @@ abstract class WorkState with _$WorkState {
   const WorkState._();
 
   factory WorkState({
-    @JsonKey(name: 'title-875803') required String title,
+    required String title,
     required DateTime date,
     required String description,
     required WorkImage? image,
