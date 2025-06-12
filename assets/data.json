@@ -3,7 +3,7 @@
         "title": "麻雀コンパス",
         "date": "2024-03-21T15:00:00.000Z",
         "description": "麻雀卓の中央に置くやつ。局・本場表示とサイコロ機能、ツモ山位置表示機能がある。",
-        "image": "https://dicenull.assets.newt.so/v1/8314e253-ad0c-44ac-a401-a2af5f25ad4a/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882024-03-2221.13.49.png",
+        "image": "8314e253-ad0c-44ac-a401-a2af5f25ad4a.png",
         "sourceUrl": "https://github.com/dicenull/mahjong_compass",
         "appUrl": "https://dicenull.github.io/mahjong_compass",
         "tag": [
@@ -17,7 +17,7 @@
         "title": "究極のおせち",
         "date": "2023-12-29T15:00:00.000Z",
         "description": "具材ピースを置いて、おせちを完成させるパズルゲーム。社内ハッカソン的なイベントで作成。PMとゲームロジック実装を担当。\n",
-        "image": "https://dicenull.assets.newt.so/v1/cd326adc-3169-4200-9b65-9a014d45ea21/293295348-2d0fdf8f-0adc-4fd5-b5ac-ca81413d3752.png",
+        "image": "cd326adc-3169-4200-9b65-9a014d45ea21.png",
         "sourceUrl": "https://github.com/jigintern/ultimate-osechi",
         "appUrl": "https://ultimate-osechi.deno.dev/",
         "tag": [
@@ -31,7 +31,7 @@
         "title": "var foo=Bar",
         "date": "2023-12-28T15:00:00.000Z",
         "description": "カクテルを注文できるモバイルメニューアプリ。忘年会で有志がバーテンダーをすることになり、作成した。アプリ実装のメンターと管理画面実装を担当。",
-        "image": "https://dicenull.assets.newt.so/v1/84376182-4746-4457-9e30-92dfff9a35aa/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882024-02-0815.13.08.png",
+        "image": "84376182-4746-4457-9e30-92dfff9a35aa.png",
         "sourceUrl": "https://github.com/mokumoku-party/mobile-menu",
         "appUrl": "https://mokumoku-party.github.io/mobile-menu/",
         "tag": [
@@ -45,7 +45,7 @@
         "title": "ポートフォリオ",
         "date": "2023-12-14T15:00:00.000Z",
         "description": "ポートフォリオ、今まで作ったものを展示している。\n説明・コード・アプリへのリンクがある。",
-        "image": "https://dicenull.assets.newt.so/v1/25425c76-1e46-4efe-8642-eb9e0e5340f7/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-12-150.20.01.png",
+        "image": "25425c76-1e46-4efe-8642-eb9e0e5340f7.png",
         "sourceUrl": "https://github.com/dicenull/portfolio",
         "appUrl": "https://dicenull.com",
         "tag": [
@@ -193,7 +193,7 @@
         "title": "Emotionic",
         "date": "2017-10-20T15:00:00.000Z",
         "description": "Kinectで姿勢推定し、プロジェクターでエフェクトをつけるシステム。Kinect・プロジェクタの位置調整・エフェクト発火のプログラムを担当。プロコン2017自由部門参加作品。",
-        "image": "https://dicenull.assets.newt.so/v1/5dcf0944-1be8-4f91-a452-79cdee045fcf/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-3014.24.12.png",
+        "image": "5dcf0944-1be8-4f91-a452-79cdee045fcf.png",
         "sourceUrl": "https://github.com/Emotionic/EmServer",
         "appUrl": "",
         "tag": [
@@ -207,7 +207,7 @@
         "title": "DiceAIシューティング",
         "date": "2017-10-27T15:00:00.000Z",
         "description": "全自動で戦うAIシューティングゲーム。フィールドの情報から次の行動を決定するクライアントを実装して戦わせる。",
-        "image": "https://dicenull.assets.newt.so/v1/feb63d5f-acc0-4a33-893e-5f635b28a19d/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2917.49.36.png",
+        "image": "feb63d5f-acc0-4a33-893e-5f635b28a19d.png",
         "sourceUrl": "https://github.com/dicenull/DiceStg-Online",
         "appUrl": "https://github.com/dicenull/DiceStg-Online/releases/tag/v0.1.1",
         "tag": [
@@ -235,7 +235,7 @@
         "title": "お宅の庭敷き詰めます",
         "date": "2018-02-11T15:00:00.000Z",
         "description": "パズルを送りあう横スクロールパズルアクションゲーム。全ての実装を担当。部内プロコン参加作品。",
-        "image": "https://dicenull.assets.newt.so/v1/9f37a63f-4c12-4550-8723-0bf8c8893a60/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2917.40.43.png",
+        "image": "9f37a63f-4c12-4550-8723-0bf8c8893a60.png",
         "sourceUrl": "https://github.com/dicenull/GameOfTeamD",
         "appUrl": "https://github.com/dicenull/GameOfTeamD/releases/tag/v0.1.2",
         "tag": [
@@ -290,7 +290,7 @@
         "title": "落華",
         "date": "2019-03-01T15:00:00.000Z",
         "description": "パズルと避けゲーを組み合わせたパズルゲーム​。大元のUnity実装を担当。DA-TE APPs! 2019参加作品。",
-        "image": "https://dicenull.assets.newt.so/v1/6443ae6f-e0ef-4302-a891-8c60d013558c/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2917.22.53.png",
+        "image": "6443ae6f-e0ef-4302-a891-8c60d013558c.png",
         "sourceUrl": "https://github.com/dicenull/otibana_document/blob/master/index.md",
         "appUrl": "https://drive.google.com/drive/folders/12jOuLEo-QQHzJsBYqtJALtY71T6SICsc",
         "tag": [
@@ -317,7 +317,7 @@
         "title": "MeglimathSimulator",
         "date": "2018-10-27T15:00:00.000Z",
         "description": "プロコン2018競技部門のアプリ。UI実装とアルゴリズムの繋ぎ込みを担当。プロコン2018競技部門参加作品。",
-        "image": "https://dicenull.assets.newt.so/v1/387d4c48-9ee5-4ae7-8723-30c938ee3a1c/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2917.13.49.png",
+        "image": "387d4c48-9ee5-4ae7-8723-30c938ee3a1c.png",
         "sourceUrl": "https://github.com/dicenull/MeglimathSimulator",
         "appUrl": "https://github.com/dicenull/MeglimathSimulator/releases/tag/v1.1",
         "tag": [
@@ -344,7 +344,7 @@
         "title": "DiceVsYosanoRemake",
         "date": "2019-03-21T15:00:00.000Z",
         "description": "初めて作ったローカル対戦ゲームをリメイクしたもの。ダイスでPvPと、与謝野を倒す協力PvEモードがある。",
-        "image": "https://dicenull.assets.newt.so/v1/ebb4b5ee-4800-40d1-9d81-8379a5deb3fd/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2917.05.20.png",
+        "image": "ebb4b5ee-4800-40d1-9d81-8379a5deb3fd.png",
         "sourceUrl": "https://github.com/dicenull/DiceVsYosanoRemake",
         "appUrl": "",
         "tag": [
@@ -398,7 +398,7 @@
         "title": "ParrotSort",
         "date": "2020-06-04T15:00:00.000Z",
         "description": "ピンク色と黒色のPartyParrotを仕分けするゲーム。仕分けするとスコアが増えていく。某ミニゲームを参考にした。",
-        "image": "https://dicenull.assets.newt.so/v1/c4ebe90c-dc08-4754-b3d1-a28dc6ba26e3/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2310.40.52.png",
+        "image": "c4ebe90c-dc08-4754-b3d1-a28dc6ba26e3.png",
         "sourceUrl": "https://github.com/dicenull/ParrotSort",
         "appUrl": "https://github.com/dicenull/ParrotSort/releases/tag/1.0",
         "tag": [
@@ -412,7 +412,7 @@
         "title": "おりがみマニア",
         "date": "2020-11-27T15:00:00.000Z",
         "description": "おりがみの折り方をARで表示するアプリ。UI実装と折り方のAR表示部分を担当。SPAJAM2020参加作品。",
-        "image": "https://dicenull.assets.newt.so/v1/1ac11956-7863-468f-a598-8453b6a99d56/EkBfrrIUYAYDklK.png_large.png",
+        "image": "1ac11956-7863-468f-a598-8453b6a99d56.png",
         "sourceUrl": "https://github.com/MisakiMa/spajam2020",
         "appUrl": "",
         "tag": [
@@ -468,7 +468,7 @@
         "title": "完全目押しスロット",
         "date": "2021-06-03T15:00:00.000Z",
         "description": "目押しで止まる簡単なスロットゲーム。 完全目押しで絵柄がそろうと点数が増える。絵柄のドット絵も自作。",
-        "image": "https://dicenull.assets.newt.so/v1/5cbcbdec-4466-4aea-8cf3-02bc69c6da23/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2310.06.27.png",
+        "image": "5cbcbdec-4466-4aea-8cf3-02bc69c6da23.png",
         "sourceUrl": "https://github.com/dicenull/flutter_slot",
         "appUrl": "https://cranky-beaver-00e32b.netlify.app/",
         "tag": [
@@ -482,7 +482,7 @@
         "title": "WWクッキークリッカー",
         "date": "2021-06-28T15:00:00.000Z",
         "description": "クッキークリッカーできるゲーム。アップグレード2種の売買まで実装した。ぐるぐる回すカーソルがお気に入り。",
-        "image": "https://dicenull.assets.newt.so/v1/19627409-5da2-4c2c-827d-f58decd59ebc/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-2310.01.22.png",
+        "image": "19627409-5da2-4c2c-827d-f58decd59ebc.png",
         "sourceUrl": "https://github.com/dicenull/flutter_flame_cookie_clicker",
         "appUrl": "https://objective-heyrovsky-65ec63.netlify.app/#/",
         "tag": [
@@ -496,7 +496,7 @@
         "title": "にぶたんロガー",
         "date": "2022-10-07T15:00:00.000Z",
         "description": "手動で二分探索できるアプリ。どのバージョンでバグが発生したかgit bisectするときに使う。",
-        "image": "https://dicenull.assets.newt.so/v1/76f33678-dbdd-474d-b5e2-14a575403390/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-239.47.03.png",
+        "image": "76f33678-dbdd-474d-b5e2-14a575403390.png",
         "sourceUrl": "https://github.com/dicenull/flutter_nibutan_app",
         "appUrl": "https://dicenull.github.io/flutter_nibutan_app/#/setup",
         "tag": [
@@ -510,7 +510,7 @@
         "title": "Jpeg手動修復",
         "date": "2021-12-05T15:00:00.000Z",
         "description": "意図的に破壊したJpegファイルを修復するゲーム。破壊した数字と同じ数字を入力すると正しいJpegファイルが表示される。アドベントカレンダー向けに作成。",
-        "image": "https://dicenull.assets.newt.so/v1/1e3a93d7-34df-414f-8c51-00ff32b227d3/147756272-375287f0-996b-47a8-af3f-8be374239912.png",
+        "image": "1e3a93d7-34df-414f-8c51-00ff32b227d3.png",
         "sourceUrl": "https://github.com/dicenull/flutter_jpeg_hand_repair",
         "appUrl": "https://dicenull.github.io/flutter_jpeg_hand_repair/",
         "tag": [
@@ -552,7 +552,7 @@
         "title": "ぼざろパラパラ",
         "date": "2022-12-28T15:00:00.000Z",
         "description": "ぼっちざロックのCDの絵柄を再現するアプリ。CDを買い、この表現を発見した感動で一晩で作った。",
-        "image": "https://dicenull.assets.newt.so/v1/5075824c-c6a3-44a7-8bb0-5e3edcc270fc/209836151-3ae5851d-9874-40d9-a311-c8df33413f2a.png",
+        "image": "5075824c-c6a3-44a7-8bb0-5e3edcc270fc.png",
         "sourceUrl": "https://github.com/dicenull/flutter_btr_parapara",
         "appUrl": "https://dicenull.github.io/flutter_btr_parapara/",
         "tag": [
@@ -566,7 +566,7 @@
         "title": "SABAEゴミレンズ",
         "date": "2022-12-17T15:00:00.000Z",
         "description": "カメラに写したごみの分別を自動で判定するアプリ。Yoloで判定した物体を鯖江市のごみ分別にマッピングして判定している。カニハッカソン2022で作成。",
-        "image": "https://dicenull.assets.newt.so/v1/322d6e37-a925-4d91-b335-b8e5b510ad09/Screenshot_20231123-093129.png",
+        "image": "322d6e37-a925-4d91-b335-b8e5b510ad09.png",
         "sourceUrl": "https://github.com/dicenull/hackathon2022_team_jig",
         "appUrl": "",
         "tag": [
@@ -580,7 +580,7 @@
         "title": "ずんだもんスロット",
         "date": "2023-09-11T15:00:00.000Z",
         "description": "ずんだもちを作ると大当たりなスロットゲーム。ずんだを揃えるとチャンスモード、ずんだもちを揃えるとボーナスモードとモード遷移を搭載した。",
-        "image": "https://dicenull.assets.newt.so/v1/6f569761-7591-488d-b99f-3fa7ec3d0443/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-239.26.02.png",
+        "image": "6f569761-7591-488d-b99f-3fa7ec3d0443.png",
         "sourceUrl": "https://github.com/dicenull/zmn_slot",
         "appUrl": "https://dicenull.github.io/zmn_slot/",
         "tag": [
@@ -594,7 +594,7 @@
         "title": "HANABISHI",
         "date": "2023-08-24T15:00:00.000Z",
         "description": "自分で花火を作れるWebアプリ。花火の色と種類を選んで、画面上に打ち上げができる。主に花火の描画を担当。タイトルを連打すると...?",
-        "image": "https://dicenull.assets.newt.so/v1/ed123e82-1274-46f1-b0a6-c6e34a95c255/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-239.20.45.png",
+        "image": "ed123e82-1274-46f1-b0a6-c6e34a95c255.png",
         "sourceUrl": "https://github.com/mokumoku-party/2023-summer-z",
         "appUrl": "https://hanabishi.deno.dev/",
         "tag": [
@@ -622,7 +622,7 @@
         "title": "Denoで学ぶWeb開発",
         "date": "2023-11-11T15:00:00.000Z",
         "description": "Web開発をフルスタックに学べる本。Denoとバックエンドの章の執筆や校閲を担当した。技術書典15 サークル参加作品。",
-        "image": "https://dicenull.assets.newt.so/v1/62c312e3-3fab-48d7-8b48-81e5680b5442/iLjrNP7MCXfxpwFyV622VK.png",
+        "image": "62c312e3-3fab-48d7-8b48-81e5680b5442.png",
         "sourceUrl": "",
         "appUrl": "https://techbookfest.org/product/d8utLuNs0RDBMcJLk1gxzd",
         "tag": [
@@ -636,7 +636,7 @@
         "title": "ぐーぽんっ！",
         "date": "2023-11-14T15:00:00.000Z",
         "description": "旅行者と地元民のマッチングと、話すきっかけや話題を提供するアプリ。UI実装とカメラ制御を担当した。NRI ハッカソン2023で作ったアプリ。",
-        "image": "https://dicenull.assets.newt.so/v1/c464cb44-5725-46a3-8fb9-0f7a0cca79a3/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%882023-11-1716.49.53.png",
+        "image": "c464cb44-5725-46a3-8fb9-0f7a0cca79a3.png",
         "sourceUrl": "https://github.com/mokumoku-party/goupon_app",
         "appUrl": "https://mokumoku-party.github.io/goupon_app",
         "tag": [
