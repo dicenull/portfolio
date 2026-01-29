@@ -115,6 +115,7 @@ class _WindowList extends HookConsumerWidget {
             ),
             Flexible(
               child: ListView.builder(
+                cacheExtent: 800,
                 shrinkWrap: true,
                 itemCount: data.length,
                 itemBuilder: (context, index) => Container(
