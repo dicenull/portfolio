@@ -4,8 +4,7 @@
     {
       "name": "portfolio",
       "request": "launch",
-      "type": "dart",
-      "args": ["--dart-define-from-file=env.json"]
+      "type": "dart"
     },
     {
       "name": "portfolio (profile mode)",
